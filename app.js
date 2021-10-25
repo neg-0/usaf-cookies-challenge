@@ -10,8 +10,12 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 app.get("/login", (req, res) => {
-    res.cookie("username", "dustin")
-    res.send("Added username")
+    if (req.query.username) {
+        res.cookie("username", req.query.username)
+        res.send(`Added username ${req.query.username}`)
+    } else {
+        res.send(`username query required`)
+    }
 })
 
 app.get("/hello", (req, res) => {
