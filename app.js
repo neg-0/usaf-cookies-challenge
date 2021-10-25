@@ -14,7 +14,7 @@ app.get("/login", (req, res) => {
         res.cookie("username", req.query.username)
         res.send(`Added username ${req.query.username}`)
     } else {
-        res.send(`username query required`)
+        res.send(`username query required, e.g. /login?username=test`)
     }
 })
 
